@@ -1,0 +1,18 @@
+general:
+  cfApiEndpoint: 'https://api.cf.sap.hana.ondemand.com'
+  cfOrg: 'myOrg'
+  cfSpace: 'mySpace'
+  cfCredentialsId: 'cfAuthentification'
+  cfServiceInstance: 'atc_system'
+  cfServiceKeyName: 'JENKINS_SAP_COM_0510'
+stages:
+  Prepare System:
+    cfServiceManifest: 'manifest.yml'
+    cfServiceKeyConfig: 'serviceKey.json'
+  Clone Repositories:
+    repositoryNames: ['/DMO/SWC']
+  ATC:
+    atcConfig: 'atcConfig.yml'
+steps:
+  cloudFoundryDeleteService:
+    cfDeleteServiceKeys: true
