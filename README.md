@@ -15,7 +15,7 @@ If you want to recreate a specifc use case, you can copy the associated files an
 
 ## Examples
 
-* [Running ATC checks on a transient ABAP Environment system](https://github.wdf.sap.corp/staging-for-SAP-samples-public/abap-platform-ci-cd-samples/blob/atc-transient/README.md)
+* [Running ATC checks on a transient ABAP Environment system]()
 * Running ATC checks on a static ABAP Environment system
  
 ## Known Issues
