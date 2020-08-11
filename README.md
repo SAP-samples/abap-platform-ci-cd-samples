@@ -16,7 +16,10 @@ If you want to recreate a specifc use case, you can copy the associated files an
 ## Examples
 
 * Running ATC checks on a transient ABAP Environment system
-* Running ATC checks on a static ABAP Environment system
+
+## Contributing
+
+This project is only updated by SAP employees.
  
 ## Known Issues
 A list of known issues is available on the GitHub issues page of this repository
