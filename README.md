@@ -1,8 +1,8 @@
 # ABAP Platform CI/CD Samples
-The ABAP Environment pipeline makes use of APIs of the SAP Cloud Platform (esp. cf cli) and the SAP Cloud Platform ABAP Environment (Projectname Steampunk). While the pipeline contains a fixed set of steps and stages, it is possible to adapt it using different configurations. This repository shows and explains different examples of these configurations. 
+The ABAP Environment pipeline makes use of APIs of the SAP Cloud Platform (esp. cf cli) and the SAP Cloud Platform, ABAP environment (project name "Steampunk"). While the pipeline contains a fixed set of steps and stages, it is possible to adapt it using different configurations. This repository shows and explains different examples of these configurations. 
 
 ## Requirements
-To create the examples shown in this repository yourself a Jenkins server and the entitlements for a SAP Cloud Platform ABAP Environment are required.
+To create the examples shown in this repository yourself, a Jenkins server and the entitlements for SAP Cloud Platform, ABAP environment are required.
 
 ## Configuration
 Please have a look at the [documentation of the piper project](https://sap.github.io/jenkins-library/pipelines/abapEnvironment/introduction/) to learn more about the configurations necessary to run the examples in this repository.
@@ -23,7 +23,7 @@ If you want to recreate a specifc use case, you can copy the associated files an
 This project is only updated by SAP employees.
  
 ## Known Issues
-A list of known issues is available on the GitHub issues page of this repository
+A list of known issues is available on the GitHub issues page of this repository.
 
 ## License
 Copyright (c) 2020 SAP SE or an SAP affiliate company. All rights reserved. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](/LICENSE) file.
