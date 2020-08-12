@@ -23,3 +23,6 @@ This project is only updated by SAP employees.
  
 ## Known Issues
 A list of known issues is available on the GitHub issues page of this repository
+
+## License
+Copyright (c) 2020 SAP SE or an SAP affiliate company. All rights reserved. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](/LICENSE) file.
