@@ -1,13 +1,50 @@
 general:
+  abapAddonAssemblyKitCredentialsId: 'TechUserAAKaaS'
+  addonDescriptorFileName: 'addon.yml'
   cfApiEndpoint: 'https://api.cf.sap.hana.ondemand.com'
-  cfOrg: 'myOrg'
-  cfSpace: 'mySpace'
+  cfOrg: 'myOrgBld'
+  cfSpace: 'mySpaceBld'
   cfCredentialsId: 'cfAuthentification'
-  cfServiceInstance: 'atc_system'
+  cfServiceInstance: 'bld_system'
   cfServiceKeyName: 'JENKINS_SAP_COM_0510'
 stages:
+  Prepare System:
+    cfService: 'abap'
+    cfServicePlan: 'standard'
+    abapSystemAdminEmail: 'user@example.com'
+    abapSystemDescription: 'Assembly System'
+    abapSystemIsDevelopmentAllowed: false
+    abapSystemID: 'BLD'
+    abapSystemSizeOfPersistence: 4
+    abapSystemSizeOfRuntime: 1
+    includeAddon: false
+    cfServiceKeyConfig: 'sap_com_0510.json'
   Clone Repositories:
-    repositories: 'repositories.yml'
-    strategy: 'Pull'
+    repositories: 'addon.yml'
+    strategy: 'AddonBuild'
   ATC:
     atcConfig: 'atcConfig.yml'
+  Build:
+    cfServiceKeyName: 'JENKINS_SAP_COM_0582'
+    cfServiceKeyConfig: 'sap_com_0582.json'
+  Integration Tests:
+    cfOrg: 'myOrgAti'
+    cfSpace: 'mySpaceAti'
+    cfServiceInstance: 'ati_system'
+    cfServiceInstanceName: 'ati_system'
+    cfService: 'abap-oem'
+    cfServicePlan: 'standard'
+    abapSystemAdminEmail: 'user@example.com'
+    abapSystemDescription: 'Add-on Installation Test System'
+    abapSystemIsDevelopmentAllowed: false
+    abapSystemID: 'ATI'
+    abapSystemSizeOfPersistence: 4
+    abapSystemSizeOfRuntime: 1
+    includeAddon: true
+    confirmDeletion: true
+  Publish:
+    targetVectorScope: 'P'
+  Post:
+    confirmDeletion: true
+    cfDeleteServiceKeys: true
+    
