@@ -1,10 +1,11 @@
-# Building add-ons for a Software as a Service solution (for SAP Partners)
+# Building add-ons
 
 [back to master](https://github.com/SAP-samples/abap-platform-ci-cd-samples/tree/master)
 
 
 ## Description
 
+Please refer to the [documentation](https://sap.github.io/jenkins-library/scenarios/abapEnvironmentAddons/) for more details about the scenario.
 This pipeline goes through the following steps/stages:
 
 * __Initial Checks__
