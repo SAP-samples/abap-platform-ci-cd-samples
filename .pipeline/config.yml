@@ -31,7 +31,6 @@ stages:
     cfOrg: 'myOrgAti'
     cfSpace: 'mySpaceAti'
     cfServiceInstance: 'ati_system'
-    cfServiceInstanceName: 'ati_system'
     cfService: 'abap-oem'
     cfServicePlan: 'standard'
     abapSystemAdminEmail: 'user@example.com'
