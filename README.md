@@ -65,7 +65,7 @@ The service provisioning parameters are described in [Create an ABAP System](htt
 **Please note:** This will perform a pull of the software components with the abapEnvironmentPullGitRepo step, a checkout of branches with the abapEnvironmentCheckoutBranch step followed by a pull of the software component again with the abapEnvironmentPullGitRepo step.
 * __ATC__: `atcConfig` pointing to configuration file for ATC checks
 * __Build__: `cfServiceKeyName` for creation of SAP_COM_0582 communication arrangement via parameters defined in `cfServiceKeyConfig` file (`sap_com_0582.json`)
-* __Integration Tests__: `cfOrg`, `cfSpace`, `cfServiceInstance`, `cfServiceInstanceName` pointing to space where add-on installation test system shall be created.  The configuration of the add-on installation test system is defined in `cfService`, `cfServicePlan`, `abapSystemAdminEmail`, `abapSystemDescription`, `abapSystemIsDevelopmentAllowed`, `abapSystemID`, `abapSystemSizeOfPersistence`, `abapSystemSizeOfRuntime`, `includeAddon`.
+* __Integration Tests__: `cfOrg`, `cfSpace`, `cfServiceInstance` pointing to space where add-on installation test system shall be created.  The configuration of the add-on installation test system is defined in `cfService`, `cfServicePlan`, `abapSystemAdminEmail`, `abapSystemDescription`, `abapSystemIsDevelopmentAllowed`, `abapSystemID`, `abapSystemSizeOfPersistence`, `abapSystemSizeOfRuntime`, `includeAddon`.
 The service provisioning parameters are described in [Create an ABAP System](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/f0163565eb554f009f990652ca41d1c6.html).
 With `confirmDeletion` the deletion of the add-on installation test system has to be confirmed.
 
