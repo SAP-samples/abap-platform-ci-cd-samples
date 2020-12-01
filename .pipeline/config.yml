@@ -31,8 +31,8 @@ stages:
     cfOrg: 'myOrgAti'
     cfSpace: 'mySpaceAti'
     cfServiceInstance: 'ati_system'
-    cfService: 'abap-oem'
-    cfServicePlan: 'standard'
+    cfService: 'abap'
+    cfServicePlan: 'saas_oem'
     abapSystemAdminEmail: 'user@example.com'
     abapSystemDescription: 'Add-on Installation Test System'
     abapSystemIsDevelopmentAllowed: false
