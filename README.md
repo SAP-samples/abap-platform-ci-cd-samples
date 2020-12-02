@@ -69,7 +69,7 @@ The service provisioning parameters are described in [Create an ABAP System](htt
 The service provisioning parameters are described in [Create an ABAP System](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/f0163565eb554f009f990652ca41d1c6.html).
 With `confirmDeletion` the deletion of the add-on installation test system has to be confirmed.
 
-**Please note:** The add-on installation test system should be provisioned as abap-oem/standard service instance with parameter `is_developmend_allowed` set to *false*.
+**Please note:** The add-on installation test system should be provisioned as abap/saas_oem service instance with parameter `is_developmend_allowed` set to *false*.
 The parameters `addon_product_version` and `addon_product_name` will be taken from the configuration in `addon.yml` file
 * __Publish__: With `targetVectorScope: 'P'` the stage is enabled
 * __Post__: With `confirmDeletion` the deletion of the assembly system has to be confirmed, `cfDeleteServiceKeys` to always delete service keys before ABAP system deletion
