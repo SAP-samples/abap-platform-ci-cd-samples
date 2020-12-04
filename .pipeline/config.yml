@@ -10,7 +10,8 @@ stages:
     cfServiceManifest: 'manifest.yml'
     cfServiceKeyConfig: 'serviceKey.json'
   Clone Repositories:
-    repositoryNames: ['/DMO/SWC']
+    repositories: 'repositories.yml'
+    strategy: 'Clone'
   ATC:
     atcConfig: 'atcConfig.yml'
 steps:
