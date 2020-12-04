@@ -6,8 +6,15 @@ general:
   cfServiceInstance: 'atc_system'
   cfServiceKeyName: 'JENKINS_SAP_COM_0510'
 stages:
-  Prepare System:
-    cfServiceManifest: 'manifest.yml'
+    Prepare System:
+    cfService: 'abap'
+    cfServicePlan: 'standard'
+    abapSystemAdminEmail: 'user@example.com'
+    abapSystemDescription: 'ABAP Environment Q System'
+    abapSystemIsDevelopmentAllowed: false
+    abapSystemID: 'H02'
+    abapSystemSizeOfPersistence: 4
+    abapSystemSizeOfRuntime: 1
     cfServiceKeyConfig: 'serviceKey.json'
   Clone Repositories:
     repositories: 'repositories.yml'
