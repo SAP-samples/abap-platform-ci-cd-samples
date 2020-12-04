@@ -11,7 +11,7 @@ Please have a look at the [documentation of the piper project](https://sap.githu
 
 ## How to use this repository
 
-A Jenkins pipeline is defined by a "Jenkinsfile" and other pipeline specific configuration files. The examples in this repository consist of all required files for a specific use case. *The folders ".reuse" and "LICENSES" are required for this Open Source project and do not belong to the pipeline configuration.*
+A Jenkins pipeline is defined by a "Jenkinsfile" and other pipeline specific configuration files. The examples in this repository consist of all required files for a specific use case. **The folders ".reuse" and "LICENSES" are required for this Open Source project and do not belong to the pipeline configuration.**
 
 If you want to recreate a specifc use case, you can copy the associated files and replace the context specifc values (API Endpoints, Jenkins Credential IDs etc.)
 
