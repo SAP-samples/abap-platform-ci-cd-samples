@@ -17,8 +17,7 @@ If you want to recreate a specifc use case, you can copy the associated files an
 
 ## ABAP Pipeline Examples - Overview
 
-* [Running ATC checks on a transient ABAP Environment system (semi-automated)](https://github.com/SAP-samples/abap-platform-ci-cd-samples/tree/atc-transient)
-* [Running ATC checks on a transient ABAP Environment system (automated)](https://github.com/SAP-samples/abap-platform-ci-cd-samples/tree/atc-transient-wait)
+* [Running ATC checks on a transient ABAP Environment system](https://github.com/SAP-samples/abap-platform-ci-cd-samples/tree/atc-transient)
 * [Running ATC checks on a static ABAP Environment system](https://github.com/SAP-samples/abap-platform-ci-cd-samples/tree/atc-static)
 * [Build add-ons on an ABAP Environment system (SAP Partner use case)](https://github.com/SAP-samples/abap-platform-ci-cd-samples/tree/addon-build)
 
