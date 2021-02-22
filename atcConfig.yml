@@ -1,4 +1,5 @@
 checkvariant: SAP_CLOUD_PLATFORM_ATC_DEFAULT
 atcobjects:
   softwarecomponent:
-    - name: "/DMO/SWC"
+    - name: "/NAMESPC/COMPONENTA"
+    - name: "/NAMESPC/COMPONENTB"
