@@ -21,7 +21,7 @@ stages:
     cfServiceKeyConfig: 'sap_com_0510.json'
   Clone Repositories:
     repositories: 'addon.yml'
-    strategy: 'AddonBuild'
+    strategy: 'Clone'
   ATC:
     atcConfig: 'atcConfig.yml'
   Build:
