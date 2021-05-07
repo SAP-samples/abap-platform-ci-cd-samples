@@ -21,6 +21,8 @@ stages:
     cfServiceKeyConfig: 'sap_com_0510.json'
   Clone Repositories:
     repositories: 'addon.yml'
+    #strategy: 'Clone' is recommended, is recommended, if a new system is created in the Prepare System stage.
+    #strategy: 'CheckoutPull' is recommended, if a static system is used. The software component should be cloned beforehand.
     strategy: 'Clone'
   ATC:
     atcConfig: 'atcConfig.yml'
