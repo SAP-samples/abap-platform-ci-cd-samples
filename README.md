@@ -51,7 +51,7 @@ The ATC results are displayed using the [Warnings Next Generation Plugin](https:
 ## Users
 Create Jenkins Credentials for following users:
 * __cfCredentialsId__: Plaform User in Cloud Foundry environment to create assembly system, add-on installation test system, create communication arrangements SAP_COM_0510 and SAP_COM_0582 via service keys
-* __abapAddonAssemblyKitCredentialsId__: Technical Communication User via SAP One Support Launchpad to create delivery packages via Add-on Assembly Kit as a Service
+* __abapAddonAssemblyKitCredentialsId__: Technical Communication User via SAP One Support Launchpad to create delivery packages in Add-on Assembly Kit as a Service
 
 ## Configuration
 ### .pipeline/config.yml
