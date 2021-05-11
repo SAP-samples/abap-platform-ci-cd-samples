@@ -1,51 +1,97 @@
+#General Pipeline configuration, applicable for all pipeline stages
 general:
+  #Credential stored in Jenkins for the Addon Assembly Kit as a Service (AAKaaS) system
   abapAddonAssemblyKitCredentialsId: 'TechUserAAKaaS'
+  #File name of the YAML file which describes the Product Version and corresponding Software Component Versions
   addonDescriptorFileName: 'addon.yml'
+  #Cloud Foundry API Endpoint specific to region of Cloud Foundry Environment to be used
   cfApiEndpoint: 'https://api.cf.sap.hana.ondemand.com'
+  #Cloud Foundry Organization used to create assembly system
   cfOrg: 'myOrgBld'
+  #Cloud Foundry Space used to create assembly system
   cfSpace: 'mySpaceBld'
+  #Jenkins 'Username with password' credentials ID containing user and password to authenticate to the Cloud Foundry API.
   cfCredentialsId: 'cfAuthentification'
+  #Service Instance Name of assembly system
   cfServiceInstance: 'bld_system'
+  #Pointing to service key that is created for SAP_COM_0510 communication arrangement
   cfServiceKeyName: 'JENKINS_SAP_COM_0510'
+#Stage-specific configuration, only applicable for specific stages
 stages:
+  #In this stage, the assembly system is created
   Prepare System:
+    #Cloud Foundry Service to be used for creating assembly system
     cfService: 'abap'
+    #Cloud Foundry Service Plan to be used for creating assembly system
     cfServicePlan: 'standard'
+    #Admin E-Mail address for the initial administrator of the assembly system
     abapSystemAdminEmail: 'user@example.com'
+    #Description for the assembly system
     abapSystemDescription: 'Assembly System'
+    #Parameter determines, if development is allowed on the system
     abapSystemIsDevelopmentAllowed: false
+    #Three character name of the system - maps to 'sapSystemName'
     abapSystemID: 'BLD'
+    #Size of the persistence
     abapSystemSizeOfPersistence: 4
+    #Size of the runtime
     abapSystemSizeOfRuntime: 1
+    #Must be set to true to install the addon provided via 'addonDescriptorFileName'
     includeAddon: false
+    #Path to JSON config file path or JSON in-line string for Cloud Foundry Service Key creation
     cfServiceKeyConfig: 'sap_com_0510.json'
+  #This stage creates pulls/clones the specified software components (repositories) to the SAP BTP, ABAP environment system
   Clone Repositories:
+    #Specifies a YAML file containing the repositories configuration
     repositories: 'addon.yml'
     #strategy: 'Clone' is recommended if a new system is created in the Prepare System stage.
     #strategy: 'CheckoutPull' is recommended if a static system is used. The software component should be cloned beforehand.
     strategy: 'Clone'
+  #In this stage, ATC checks can be executed using abapEnvironmentRunATCCheck.
   ATC:
+    #Path to a YAML configuration file for Packages and/or Software Components to be checked during ATC run
     atcConfig: 'atcConfig.yml'
+  #This stage is responsible for building an ABAP add-on for the SAP BTP, ABAP environment.
   Build:
+    #Pointing to service key that is created for SAP_COM_0582 communication arrangement
     cfServiceKeyName: 'JENKINS_SAP_COM_0582'
+    #Path to JSON config file path or JSON in-line string for Cloud Foundry Service Key creation
     cfServiceKeyConfig: 'sap_com_0582.json'
+  #This stage creates an SAP BTP, ABAP environment (Steampunk) system and installs the add-on product, that was built in the Build stage
   Integration Tests:
+    #Cloud Foundry Organization used to create installation test system
     cfOrg: 'myOrgAti'
+    #Cloud Foundry Space used to create installation test system
     cfSpace: 'mySpaceAti'
+    #Service Instance Name of installation test system
     cfServiceInstance: 'ati_system'
+    #Cloud Foundry Service to be used for creating installation test system
     cfService: 'abap'
+    #Cloud Foundry Service Plan to be used for creating installation test system
     cfServicePlan: 'saas_oem'
+    #Admin E-Mail address for the initial administrator of the installation test system
     abapSystemAdminEmail: 'user@example.com'
+    #Description for the installation test system
     abapSystemDescription: 'Add-on Installation Test System'
+    #Parameter determines, if development is allowed on the system
     abapSystemIsDevelopmentAllowed: false
+    #Three character name of the system - maps to 'sapSystemName'
     abapSystemID: 'ATI'
+    #Size of the persistence
     abapSystemSizeOfPersistence: 4
+    #Size of the runtime
     abapSystemSizeOfRuntime: 1
+    #Must be set to true to install the addon provided via 'addonDescriptorFileName'
     includeAddon: true
+    #Influences, if a manual confirmation is required between the creation and deletion of the installation test system
     confirmDeletion: true
+  #This stage publishes an add-on for the SAP BTP, ABAP environment
   Publish:
+    #Determines whether the Target Vector is published to the productive ('P') or test ('T') environment
     targetVectorScope: 'P'
+  #This stage deletes the SAP BTP, ABAP environment system created in the Prepare System stage.
   Post:
+    #Influences, if a manual confirmation is required between the creation and deletion of the installation test system
     confirmDeletion: true
+    #Parameter to force deletion of Cloud Foundry Service Keys
     cfDeleteServiceKeys: true
-    
