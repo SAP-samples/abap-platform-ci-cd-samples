@@ -1,10 +1,16 @@
 ---
+# Technical name of the add-on product
 addonProduct: /NAMESPC/PRODUCTX
+# Technical version of the add-on product <product version>.<support package stack level>.<patch level>
 addonVersion: 1.2.0
 repositories:
+    # Technical name of the software component
   - name: /NAMESPC/COMPONENTA
+    # This is the release branch from the git repository
     branch: v1.2.0
+    # This is the technical software component version
     version: 1.2.0
+    # commitID specified for a repository
     commitID: 7d4516e9
   - name: /NAMESPC/COMPONENTB
     branch: v2.0.0
