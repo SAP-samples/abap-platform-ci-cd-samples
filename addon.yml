@@ -1,16 +1,20 @@
+#The build process is controlled by an add-on descriptor file called addon.yml
+#It must contain information about the to-be-delivered add-on product version and the contained software component versions
+#Link: https://www.project-piper.io/scenarios/abapEnvironmentAddons/#add-on-descriptor-file
 ---
-# Technical name of the add-on product
+#Parameter 'addonProduct': Technical name of the add-on product
 addonProduct: /NAMESPC/PRODUCTX
-# Technical version of the add-on product <product version>.<support package stack level>.<patch level>
+#Parameter 'addonVersion': Technical version of the add-on product <product version>.<support package stack level>.<patch level>
 addonVersion: 1.2.0
+#Parameter 'repositories': contains one or multiple software component versions
 repositories:
-    # Technical name of the software component
+    #Parameter 'name': Technical name of the software component
   - name: /NAMESPC/COMPONENTA
-    # This is the release branch from the git repository
+    #Parameter 'branch': This is the maintenance branch from the git repository
     branch: v1.2.0
-    # This is the technical software component version
+    #Parameter 'version': This is the technical software component version
     version: 1.2.0
-    # commitID specified for a repository
+    #Parameter 'commitID': commit id specified for a repository
     commitID: 7d4516e9
   - name: /NAMESPC/COMPONENTB
     branch: v2.0.0
