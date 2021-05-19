@@ -1,6 +1,3 @@
-#The build process is controlled by an add-on descriptor file called addon.yml
-#It must contain information about the to-be-delivered add-on product version and the contained software component versions
-#Link: https://www.project-piper.io/scenarios/abapEnvironmentAddons/#add-on-descriptor-file
 ---
 #Parameter 'addonProduct': Technical name of the add-on product
 addonProduct: /NAMESPC/PRODUCTX
