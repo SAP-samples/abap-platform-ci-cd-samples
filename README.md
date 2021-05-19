@@ -60,7 +60,7 @@ The communication with the AAKaaS needs a technical communication user. The crea
 A configuration file .pipeline/config.yml is used to provide all required values to run the pipeline.
 
 **Pipeline Stage/Parameter**|**Description**|**Documentation**|**Remarks**
-:-----:|:-----:|:-----:|:-----:
+:-----|:-----|:-----|:-----
 general &rsaquo; abapAddonAssemblyKitCredentialsId|Credentials stored in Jenkins for technical communication user to access AAKaaS|[Link](https://launchpad.support.sap.com/#/notes/2174416)|ID of username/password credentials
 general &rsaquo; cfApiEndpoint|Cloud Foundry API Endpoint specific to region of Cloud Foundry Environment to be used|[Link](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/350356d1dc314d3199dca15bd2ab9b0e.html#loio879f37370d9b45e99a16538e0f37ff2c)|Subaccount Overview &rarr; Cloud Foundry Environment &rarr; API Endpoint
 general &rsaquo; cfOrg|Cloud Foundry Organization used to create assembly system|[Link](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/fe1ebf3cd6fe46798efcaf45c73a54ce.html)|Subaccount Overview &rarr; Cloud Foundry Environment &rarr; Org Name
