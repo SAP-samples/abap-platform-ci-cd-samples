@@ -9,6 +9,8 @@ Please refer to the [documentation](https://sap.github.io/jenkins-library/scenar
 
 ### Pipeline Stages
 
+This pipeline goes through the following steps/stages:
+
 #### [Initial Checks](https://www.project-piper.io/pipelines/abapEnvironment/stages/initialChecks/)
 - Check the validity of defined addon product version
 - Check the validity of defined software component versions
