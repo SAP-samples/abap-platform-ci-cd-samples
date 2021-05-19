@@ -1,79 +1,54 @@
 general:
   #Parameter 'abapAddonAssemblyKitCredentialsId': Credentials stored in Jenkins for technical communication user to access AAKaaS
-  #Link: https://launchpad.support.sap.com/#/notes/2174416
   abapAddonAssemblyKitCredentialsId: 'TechUserAAKaaS'
   #Parameter 'cfApiEndpoint': Cloud Foundry API Endpoint specific to region of Cloud Foundry Environment to be used
-  #Link: https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/350356d1dc314d3199dca15bd2ab9b0e.html#loio879f37370d9b45e99a16538e0f37ff2c
   cfApiEndpoint: 'https://api.cf.sap.hana.ondemand.com'
   #Parameter 'cfOrg': Cloud Foundry Organization used to create assembly system
-  #Link: https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/fe1ebf3cd6fe46798efcaf45c73a54ce.html
   cfOrg: 'myOrgBld'
   #Parameter 'cfSpace': Cloud Foundry Space used to create assembly system
-  #Link: https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/5209d55d8dd84228897112b0655d999b.html
   cfSpace: 'mySpaceBld'
   #Parameter 'cfCredentialsId': Credentials stored in Jenkins for Space Developer user to authenticate to the Cloud Foundry API
-  #Link: https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/967fc4e2b1314cf7afc7d7043b53e566.html
   cfCredentialsId: 'cfAuthentification'
   #Parameter 'cfServiceInstance': Service Instance Name of assembly system
-  #Link: https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/50b32f144e184154987a06e4b55ce447.html
   cfServiceInstance: 'bld_system'
 stages:
   #Stage 'Prepare System': In this stage, the SAP BTP, ABAP environment system for add-on assembly is created.
-  #Link: https://www.project-piper.io/pipelines/abapEnvironment/stages/prepareSystem/
   Prepare System:
     #Parameter 'abapSystemAdminEmail': E-Mail address for the initial administrator of the assembly system
-    #Link: https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/50b32f144e184154987a06e4b55ce447.html
     abapSystemAdminEmail: 'user@example.com'
     #Parameter 'abapSystemDescription': Description for the assembly system
-    #Link: https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/50b32f144e184154987a06e4b55ce447.html
     abapSystemDescription: 'Assembly System'
     #Parameter 'abapSystemID': Three character name of the assembly system - maps to 'sapSystemName'
-    #Link: https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/50b32f144e184154987a06e4b55ce447.html
     abapSystemID: 'BLD'
   #Stage 'Clone Repositories': This stage creates pulls/clones the specified software components (repositories) to the assembly system
-  #Link: https://www.project-piper.io/pipelines/abapEnvironment/stages/cloneRepositories/
   Clone Repositories:
     #Parameteter 'repositories': Specifies a YAML file containing configuration of repositories to be imported
-    #Link: https://www.project-piper.io/pipelines/abapEnvironment/stages/cloneRepositories/#repositoriesyml
     repositories: 'addon.yml'
     #Parameter 'strategy': influences, which steps will be executed to import the repositories
-    #Link: https://www.project-piper.io/pipelines/abapEnvironment/stages/cloneRepositories/#stage-parameters
     #strategy: 'Clone' is recommended if a new system is created in the Prepare System stage.
     #strategy: 'CheckoutPull' is recommended if a static system is used. The software component should be cloned beforehand.
     strategy: 'Clone'
   #Stage 'ATC': In this stage, ATC checks can be executed using abapEnvironmentRunATCCheck.
-  #Link: https://www.project-piper.io/pipelines/abapEnvironment/stages/ATC/
   ATC:
     #Parameter 'atcConfig': Path to a YAML configuration file for Packages and/or Software Components to be checked during ATC run
-    #Link: https://www.project-piper.io/steps/abapEnvironmentRunATCCheck/#atc-config-file-example
     atcConfig: 'atcConfig.yml'
   #Stage 'Build': This stage is responsible for building an ABAP add-on for the SAP BTP, ABAP environment
-  #Link: https://www.project-piper.io/pipelines/abapEnvironment/stages/build/
   Build:
   #Stage 'Integration Tests': creates an SAP BTP, ABAP environment (Steampunk) system and installs the add-on product, that was built in the Build stage
-  #Link: https://www.project-piper.io/pipelines/abapEnvironment/stages/integrationTest/
   Integration Tests:
     #Parameter 'cfOrg': Cloud Foundry Organization used to create installation test system
-    #Link: https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/fe1ebf3cd6fe46798efcaf45c73a54ce.html
     cfOrg: 'myOrgAti'
     #Parameter 'cfSpace': Cloud Foundry Space used to create installation test system
-    #Link: https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/5209d55d8dd84228897112b0655d999b.html
     cfSpace: 'mySpaceAti'
     #Parameter 'cfServiceInstance': Service Instance Name of installation test system
-    #Link: https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/50b32f144e184154987a06e4b55ce447.html
     cfServiceInstance: 'ati_system'
     #Parameter 'abapSystemAdminEmail': E-Mail address for the initial administrator of the installation test system
-    #Link: https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/50b32f144e184154987a06e4b55ce447.html
     abapSystemAdminEmail: 'user@example.com'
     #Parameter 'abapSystemDescription': Description for the assembly system
-    #Link: https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/50b32f144e184154987a06e4b55ce447.html
     abapSystemDescription: 'Add-on Installation Test System'
     #Parameter 'abapSystemID': Three character name of the installation test system - maps to 'sapSystemName'
-    #Link: https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/50b32f144e184154987a06e4b55ce447.html
     abapSystemID: 'ATI'
   #Stage 'Publish': This stage publishes an add-on for the SAP BTP, ABAP environment
-  #Link: https://www.project-piper.io/pipelines/abapEnvironment/stages/publish/
   Publish:
   #Stage 'Post': This stage deletes the assembly system created in the Prepare System stage.
-  #Link: https://www.project-piper.io/pipelines/abapEnvironment/stages/post/
   Post:
