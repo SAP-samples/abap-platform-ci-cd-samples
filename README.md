@@ -90,10 +90,22 @@ stages &rsaquo; Post|This stage deletes the assembly system created in the Prepa
 
 ### [addon.yml](addon.yml)
 Definition of addon product version/software component versions bundle to be assembled.
+| Parameter               | Description                                                                                               | Remarks                                                                                                                                                                                                            |
+|-------------------------|-----------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| addonProduct            | Technical name of the add-on product                                                                      | Add-on product namne registered with SAP, see [Register Add-on Product for a Global Account](https://www.project-piper.io/scenarios/abapEnvironmentAddons/#register-add-on-product-for-a-global-account)           |
+| addonVersion            | Technical version of the add-on product: <product version>.<support package   stack level>.<patch level>  |                                                                                                                                                                                                                    |
+| repositories            | Contains one or multiple software component versions                                                      | Order of software components defines import order                                                                                                                                                                  |
+| repositories > name     | Technical name of the software component                                                                  | Name of software component in [Manage Software Components](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/3dcf76a072c9450eb46b99db947dab46.html) application                             |
+| repositories > branch   | This is the maintenance branch from the git repository                                                    | Name of branch in [Manage Software Components](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/3dcf76a072c9450eb46b99db947dab46.html) application to be checked out for add-on assembly   |
+| respoitories > version  | This is the technical software component version                                                          |                                                                                                                                                                                                                    |
+| repositories > commitID | commit id specified for a repository                                                                      | Short Commit ID as provided in [Manage software Components](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/3dcf76a072c9450eb46b99db947dab46.html)) application                           |
+
 Please refer to the documentation on [Add-on descriptor file](https://www.project-piper.io/scenarios/abapEnvironmentAddons/#add-on-descriptor-file) for more information.
 
 ### [atcConfig.yml](atcConfig.yml)
-Configuration of software components checked via ATC, check variant `SAP_CLOUD_PLATFORM_ATC_DEFAULT` is used for check runs
+Configuration of software components checked via ATC, check variant `SAP_CLOUD_PLATFORM_ATC_DEFAULT` is used for check runs.
+Please refer to the documentation on [ATC config file](https://www.project-piper.io/steps/abapEnvironmentRunATCCheck/#atc-config-file-example) for more information.
+
 
 ### [sap_com_0510.json](sap_com_0510.json)
 Service key parameters for creation of communication arrangement SAP_COM_0510
