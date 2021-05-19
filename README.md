@@ -89,7 +89,8 @@ stages &rsaquo; Publish|This stage publishes an add-on for the SAP BTP, ABAP env
 stages &rsaquo; Post|This stage deletes the assembly system created in the Prepare System stage|[Link](https://www.project-piper.io/pipelines/abapEnvironment/stages/post/)| 
 
 ### [addon.yml](addon.yml)
-Definition of addon product version/software component versions bundle to be assembled
+Definition of addon product version/software component versions bundle to be assembled.
+Please refer to the documentation on [Add-on descriptor file](https://www.project-piper.io/scenarios/abapEnvironmentAddons/#add-on-descriptor-file) for more information.
 
 ### [atcConfig.yml](atcConfig.yml)
 Configuration of software components checked via ATC, check variant `SAP_CLOUD_PLATFORM_ATC_DEFAULT` is used for check runs
