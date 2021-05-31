@@ -13,6 +13,10 @@ general:
   cfCredentialsId: 'cfAuthentification'
   #Parameter 'cfServiceInstance': Service Instance Name of assembly system
   cfServiceInstance: 'bld_system'
+  #Parameter 'cfServiceKeyName':
+  cfServiceKeyName: 'JENKINS_SAP_COM_0510'
+  #Parameter 'cfServiceKeyConfig':
+  cfServiceKeyConfig: 'sap_com_0510.json'
 stages:
   #Stage 'Prepare System': In this stage, the SAP BTP, ABAP environment system for add-on assembly is created.
   Prepare System:
