@@ -1,6 +1,8 @@
 general:
   #Parameter 'abapAddonAssemblyKitCredentialsId': Credentials stored in Jenkins for technical communication user to access AAKaaS
   abapAddonAssemblyKitCredentialsId: 'TechUserAAKaaS'
+  #Parameter 'addonDescriptorFileName':
+  addonDescriptorFileName: 'addon.yml'
   #Parameter 'cfApiEndpoint': Cloud Foundry API Endpoint specific to region of Cloud Foundry Environment to be used
   cfApiEndpoint: 'https://api.cf.sap.hana.ondemand.com'
   #Parameter 'cfOrg': Cloud Foundry Organization used to create assembly system
@@ -16,8 +18,6 @@ stages:
   Prepare System:
     #Parameter 'abapSystemAdminEmail': E-Mail address for the initial administrator of the assembly system
     abapSystemAdminEmail: 'user@example.com'
-    #Parameter 'abapSystemDescription': Description for the assembly system
-    abapSystemDescription: 'Assembly System'
     #Parameter 'abapSystemID': Three character name of the assembly system - maps to 'sapSystemName'
     abapSystemID: 'BLD'
   #Stage 'Clone Repositories': This stage creates pulls/clones the specified software components (repositories) to the assembly system
@@ -34,6 +34,7 @@ stages:
     atcConfig: 'atcConfig.yml'
   #Stage 'Build': This stage is responsible for building an ABAP add-on for the SAP BTP, ABAP environment
   Build:
+    active: true
   #Stage 'Integration Tests': creates an SAP BTP, ABAP environment (Steampunk) system and installs the add-on product, that was built in the Build stage
   Integration Tests:
     #Parameter 'cfOrg': Cloud Foundry Organization used to create installation test system
@@ -44,11 +45,11 @@ stages:
     cfServiceInstance: 'ati_system'
     #Parameter 'abapSystemAdminEmail': E-Mail address for the initial administrator of the installation test system
     abapSystemAdminEmail: 'user@example.com'
-    #Parameter 'abapSystemDescription': Description for the assembly system
-    abapSystemDescription: 'Add-on Installation Test System'
     #Parameter 'abapSystemID': Three character name of the installation test system - maps to 'sapSystemName'
     abapSystemID: 'ATI'
   #Stage 'Publish': This stage publishes an add-on for the SAP BTP, ABAP environment
   Publish:
+    active: true
   #Stage 'Post': This stage deletes the assembly system created in the Prepare System stage.
   Post:
+    active: true
