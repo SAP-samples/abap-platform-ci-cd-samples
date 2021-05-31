@@ -1,7 +1,7 @@
 general:
   #Parameter 'abapAddonAssemblyKitCredentialsId': Credentials stored in Jenkins for technical communication user to access AAKaaS
   abapAddonAssemblyKitCredentialsId: 'TechUserAAKaaS'
-  #Parameter 'addonDescriptorFileName':
+  #Parameter 'addonDescriptorFileName': Path to YAML config file for addon descriptor
   addonDescriptorFileName: 'addon.yml'
   #Parameter 'cfApiEndpoint': Cloud Foundry API Endpoint specific to region of Cloud Foundry Environment to be used
   cfApiEndpoint: 'https://api.cf.sap.hana.ondemand.com'
@@ -13,9 +13,9 @@ general:
   cfCredentialsId: 'cfAuthentification'
   #Parameter 'cfServiceInstance': Service Instance Name of assembly system
   cfServiceInstance: 'bld_system'
-  #Parameter 'cfServiceKeyName':
+  #Parameter 'cfServiceKeyName': Name of Cloud Foundry Service Key 
   cfServiceKeyName: 'JENKINS_SAP_COM_0510'
-  #Parameter 'cfServiceKeyConfig':
+  #Parameter 'cfServiceKeyConfig': Path to JSON config file for Cloud Foundry Service Key creation
   cfServiceKeyConfig: 'sap_com_0510.json'
 stages:
   #Stage 'Prepare System': In this stage, the SAP BTP, ABAP environment system for add-on assembly is created.
