@@ -9,7 +9,7 @@ Please refer to the [documentation](https://sap.github.io/jenkins-library/scenar
 
 ### Pipeline Stages
 
-This pipeline goes through the following steps/stages:
+![ABAP Environment Build Pipeline](https://www.project-piper.io/images/abapEnvironmentBuildPipeline.png "ABAP Environment Build Pipeline")
 
 #### [Initial Checks](https://www.project-piper.io/pipelines/abapEnvironment/stages/initialChecks/)
 - Check the validity of defined addon product version
