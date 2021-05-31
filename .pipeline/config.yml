@@ -56,4 +56,4 @@ stages:
     active: true
   #Stage 'Post': This stage deletes the assembly system created in the Prepare System stage.
   Post:
-    active: true
+    confirmDeletion: true
