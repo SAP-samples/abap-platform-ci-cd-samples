@@ -1,4 +1,4 @@
-# Building add-ons
+# Build add-ons on an ABAP Environment system
 
 [back to master](https://github.com/SAP-samples/abap-platform-ci-cd-samples/tree/master)
 
@@ -7,24 +7,28 @@
 
 Please refer to the [documentation](https://sap.github.io/jenkins-library/scenarios/abapEnvironmentAddons/) for more details about the scenario.
 
-This pipeline goes through the following steps/stages:
+### Pipeline Stages
 
-* __Initial Checks__
-  * Check the validity of defined addon product version
-  * Check the validity of defined software component versions
+![ABAP Environment Build Pipeline](https://www.project-piper.io/images/abapEnvironmentBuildPipeline.png "ABAP Environment Build Pipeline")
 
-* __Prepare System__
-  * Preparing a system for add-on assembly
-  * Creating a Communication Arrangement for the Scenario SAP_COM_0510 via a service key in the assembly system
+#### [Initial Checks](https://www.project-piper.io/pipelines/abapEnvironment/stages/initialChecks/)
+- Check the validity of defined addon product version
+- Check the validity of defined software component versions
 
-* __Clone Repositories__
-  * Switch between branches of a git repository on a SAP Cloud Platform ABAP Environment system
-  * Clone software components relevant for the add-on build
+#### [Prepare System](https://www.project-piper.io/pipelines/abapEnvironment/stages/prepareSystem/)
+- Preparing a system for add-on assembly
+- Creating a Communication Arrangement for the Scenario SAP_COM_0510 via a service key in the assembly system
 
-* __ATC__
-  * Check software components to be assembled as part of the add-on build via ABAP Test Cockpit (Check Variant: SAP_CLOUD_PLATFORM_ATC_DEFAULT)
+#### [Clone Repositories](https://www.project-piper.io/pipelines/abapEnvironment/stages/cloneRepositories/)
+- Switch between branches of a git repository on a SAP Cloud Platform ABAP Environment system
+- Clone software components relevant for the add-on build
 
-* __Build__
+#### [ATC](https://www.project-piper.io/pipelines/abapEnvironment/stages/ATC/)
+- Check software components to be assembled as part of the add-on build via ABAP Test Cockpit (Check Variant: SAP_CLOUD_PLATFORM_ATC_DEFAULT)
+
+**Note**: The ATC results are displayed using the [Warnings Next Generation Plugin](https://www.jenkins.io/doc/pipeline/steps/warnings-ng/#warnings-next-generation-plugin). If you don't want to use this plugin - or if it's not available on your Jenkins server - leave out the extension for the ATC stage (.pipeline/extensions/ATC.groovy).
+
+#### [Build](https://www.project-piper.io/pipelines/abapEnvironment/stages/build/)
   * Creating a Communication Arrangement for the Scenario SAP_COM_0582 via a service key in the assembly system
   * Determine the ABAP delivery packages (name and type) to be created as part of the add-on build
   * Assembly of installation, support package or patch in in the assembly system
@@ -33,69 +37,80 @@ This pipeline goes through the following steps/stages:
   * Release the physical delivery packages
   * Trigger publication of the target vector with test scope
 
-* __Integration Tests__
+#### [Integration Tests](https://www.project-piper.io/pipelines/abapEnvironment/stages/integrationTest/)
   * Preparing a system for the add-on test installation, system is deprovisioned after successful testing has been confirmed
 
-* __Confirm__: Release Decision
+#### [Confirm](https://www.project-piper.io/pipelines/abapEnvironment/stages/confirm/)
+Release Decision
 
-* __Publish__
+#### [Publish](https://www.project-piper.io/pipelines/abapEnvironment/stages/publish/)
   * After confirmation: Trigger publication of the target vector with production scope
 
-* __Post__
-  * After successful pipeline execution: assembly system is deprovisioned
-  
-The ATC results are displayed using the [Warnings Next Generation Plugin](https://www.jenkins.io/doc/pipeline/steps/warnings-ng/#warnings-next-generation-plugin). If you don't want to use this plugin - or if it's not available on your Jenkins server - leave out the extension for the ATC stage (.pipeline/extensions/ATC.groovy).
-
-**Please note:** Currently, it is necessary to manually confirm ABAP system provisionings. The system is ready, if the confirmation email has been received by the initial administrator (email address provided via provisioning parameter admin_email). By using an extension for the "Prepare System" stage, the manual confirmation can be substituted by a "wait" statement. A waiting period of three hours is usually more than enough. Nevertheless, it could happen that the system is not yet ready by that time and the pipeline will fail. Please have a look at this [example](https://github.com/SAP-samples/abap-platform-ci-cd-samples/tree/atc-transient-wait).
-
-## Users
-Create Jenkins Credentials for following users:
-* __cfCredentialsId__: Plaform User in Cloud Foundry environment to create assembly system, add-on installation test system, create communication arrangements SAP_COM_0510 and SAP_COM_0582 via service keys
-* __abapAddonAssemblyKitCredentialsId__: Technical Communication User via SAP One Support Launchpad to create delivery packages in Add-on Assembly Kit as a Service
+#### [Post](https://www.project-piper.io/pipelines/abapEnvironment/stages/post/)
+  * After successful pipeline execution: assembly system is deleted
 
 ## Configuration
-### .pipeline/config.yml
-#### general
-*Valid for all stages and steps*
+### [.pipeline/config.yml](.pipeline/config.yml)
+A configuration file .pipeline/config.yml is used to provide all required values to run the pipeline.
 
-* `abapAddonAssemblyKitCredentialsId`: Technical Communication User via SAP One Support Launchpad, stored in Jenkins Credentials
-* `addonDescriptorFileName`: add-on descriptor file
-* `cfApiEndpoint`: API Endpoint specific to region of Cloud Foundry Environment to be used
-* `cfOrg`, `cfSpace`, `cfServiceInstance` pointing to space where assembly system is created
-* `cfServiceKeyName` pointing to service key that is created for SAP_COM_0510 communication arrangement
-#### stages
-* __Prepare System__: configuration of assembly system defined in `cfService`, `cfServicePlan`, `abapSystemAdminEmail`, `abapSystemDescription`, `abapSystemIsDevelopmentAllowed`, `abapSystemID`, `abapSystemSizeOfPersistence`, `abapSystemSizeOfRuntime`, `includeAddon`; service key configuration for creation of SAP_COM_0510 communication arrangement in `sap_com_0510.json` as well as name of service key to be created.
-The service provisioning parameters are described in [Creating an ABAP System](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/50b32f144e184154987a06e4b55ce447.html).
-The add-on assembly system should be provisioned as abap/standard service instance with parameter `is_developmend_allowed` set to *false* to prevent any unwanted changes to development objects.
+| **Pipeline Stage/Parameter**                                                                                    | **Description**                                                                                                                                                                                                                              | **Remarks**                                                                                                                                                                                 |                          
+|-----------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| general › abapAddonAssemblyKitCredentialsId                                                                     | Credentials stored in Jenkins for [technical communication user](https://launchpad.support.sap.com/#/notes/2174416) to access AAKaaS                                                                                                         | ID of username/password credentials                                                                                                                                                         |
+| general › addonDescriptorFileName                                                                               | Path to YAML config file for [addon descriptor](https://www.project-piper.io/scenarios/abapEnvironmentAddons/#add-on-descriptor-file)                                                                                                        | ID of username/password credentials                                                                                                                                                         |
+| general › cfApiEndpoint                                                                                         | [Cloud Foundry API Endpoint](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/350356d1dc314d3199dca15bd2ab9b0e.html#loio879f37370d9b45e99a16538e0f37ff2c) specific to region of Cloud Foundry Environment to be used | Subaccount Overview → Cloud Foundry Environment → API Endpoint                                                                                                                              |
+| general › cfOrg                                                                                                 | [Cloud Foundry Org](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/fe1ebf3cd6fe46798efcaf45c73a54ce.html) used to create assembly system                                                                           | Subaccount Overview → Cloud Foundry Environment → Org Name                                                                                                                                  |
+| general › cfSpace                                                                                               | [Cloud Foundry Space](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/5209d55d8dd84228897112b0655d999b.html) used to create assembly system                                                                         |                                                                                                                                                                                             |
+| general › cfCredentialsId                                                                                       | Credentials stored in Jenkins for [Space Developer](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/967fc4e2b1314cf7afc7d7043b53e566.html) user to authenticate to the Cloud Foundry API                            | User needs org member/subaccount administrator and assigned to space withs space developer role                                                                                             |
+| general › cfServiceInstance                                                                                     | Name of [ABAP service instance](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/50b32f144e184154987a06e4b55ce447.html) for add-on assembly                                                                          |                                                                                                                                                                                             |
+| general › cfServiceKeyName                                                                                      | Name of [Cloud Foundry Service Key](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/4514a14ab6424d9f84f1b8650df609ce.html)                                                                                          | Creation of communication arrangement [SAP_COM_0510](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/b04a9ae412894725a2fc539bfb1ca055.html)                        |
+| stages › [Prepare System](https://www.project-piper.io/pipelines/abapEnvironment/stages/prepareSystem/)         | In this stage, the SAP BTP, ABAP environment system for add-on assembly is created                                                                                                                                                           |                                                                                                                                                                                             |
+| stages › Prepare System › abapSystemAdminEmail                                                                  | [E-Mail address for the initial administrator](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/50b32f144e184154987a06e4b55ce447.html) of the assembly system                                                        |                                                                                                                                                                                             |
+| stages › Prepare System › abapSystemID                                                                          | Three character name of the assembly system - maps to [sapSystemName](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/50b32f144e184154987a06e4b55ce447.html)                                                        | Shown in Landscape Portal application                                                                                                                                                       |
+| stages › Prepare System › cfServiceKeyConfig                                                                    | Path to [JSON config file for Cloud Foundry Service Key](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/1cc5a1da02594b93a70f6c0fe2bfdfe8.html) creation                                                            | Creation of communication arrangement [SAP_COM_0510](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/b04a9ae412894725a2fc539bfb1ca055.html)                        |
+| stages › [Clone Repositories](https://www.project-piper.io/pipelines/abapEnvironment/stages/cloneRepositories/) | This stage creates pulls/clones the specified software components (repositories) to the SAP BTP, ABAP environment system                                                                                                                     | addon.yml file can be used as format is the same as repositories.yml                                                                                                                        |
+| stages › Clone Repositories › repositories                                                                      | Specifies a YAML file containing [configuration of repositories](https://www.project-piper.io/pipelines/abapEnvironment/stages/cloneRepositories/#repositoriesyml) to be imported                                                            | addon.yml file can be used as format is the same as repositories.yml                                                                                                                        |
+| stages › Clone Repositories › strategy                                                                          | Influences, [which steps will be executed to import the repositories](https://www.project-piper.io/pipelines/abapEnvironment/stages/cloneRepositories/#stage-parameters)                                                                     | Clone' is recommended if a new system is created in the Prepare System stage, 'CheckoutPull' is recommended if a static system is used. The software component should be cloned beforehand. |
+| stages › [ATC](https://www.project-piper.io/pipelines/abapEnvironment/stages/ATC/)                              | In this stage, ATC checks can be executed using abapEnvironmentRunATCCheck                                                                                                                                                                   |                                                                                                                                                                                             |
+| stages › ATC › atcConfig                                                                                        | Path to a YAML [file including check configuration](https://www.project-piper.io/steps/abapEnvironmentRunATCCheck/#atc-config-file-example) for packages and/or software components                                                          |                                                                                                                                                                                             |
+| stages › [Build](https://www.project-piper.io/pipelines/abapEnvironment/stages/build/)                          | This stage is responsible for building an ABAP add-on for the SAP BTP, ABAP environment                                                                                                                                                      |                                                                                                                                                                                             |
+| stages › Build › cfServiceKeyName                                                                               | Name of [Cloud Foundry Service Key](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/4514a14ab6424d9f84f1b8650df609ce.html)                                                                                          | Creation of communication arrangement [SAP_COM_0582](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/26b8df5435c649aa8ea7b3688ad5bb0a.html)                        |
+| stages › [Integration Tests](https://www.project-piper.io/pipelines/abapEnvironment/stages/integrationTest/)    | Creates an SAP BTP, ABAP environment (Steampunk) system and installs the add-on product, that was built in the Build stage                                                                                                                   |                                                                                                                                                                                             |
+| stages › Integration Tests › cfOrg                                                                              | [Cloud Foundry Org](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/fe1ebf3cd6fe46798efcaf45c73a54ce.html) used to create installation test system                                                                  | Subaccount Overview → Cloud Foundry Environment → Org Name                                                                                                                                  |
+| stages › Integration Tests › cfSpace                                                                            | [Cloud Foundry Space](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/5209d55d8dd84228897112b0655d999b.html) used to create installation test system                                                                |                                                                                                                                                                                             |
+| stages › Integration Tests › cfServiceInstance                                                                  | Name of [ABAP service instance](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/50b32f144e184154987a06e4b55ce447.html) for installation test                                                                        |                                                                                                                                                                                             |
+| stages › Integration Tests › abapSystemAdminEmail                                                               | [E-Mail address for the initial administrator](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/50b32f144e184154987a06e4b55ce447.html) of the installation test system                                               |                                                                                                                                                                                             |
+| stages › Integration Tests › abapSystemID                                                                       | Three character name of the installation test system - maps to [sapSystemName](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/50b32f144e184154987a06e4b55ce447.html)                                               | Shown in Landscape Portal application                                                                                                                                                       |
+| stages › [Publish](https://www.project-piper.io/pipelines/abapEnvironment/stages/publish/)                      | This stage publishes an add-on for the SAP BTP, ABAP environment                                                                                                                                                                             |                                                                                                                                                                                             |
+| stages › [Post](https://www.project-piper.io/pipelines/abapEnvironment/stages/post/)                            | This stage deletes the assembly system created in the Prepare System stage                                                                                                                                                                   |                                                                                                                                                                                             |
 
-* __Clone Repositories__: `repositories` list of software components to be imported is provided in the `addon.yml` file and an import `strategy` is defined:
-  * Use `strategy: 'CheckoutPull'` in case a static assembly system is used
-  * Use `strategy: 'Clone'` in case a new assembly system is provisioned in *Prepare System* stage
+### Users
+Create [Jenkins Credentials](https://www.jenkins.io/doc/book/using/using-credentials/) for following users.
+#### cfCredentialsId
+Plaform User in Cloud Foundry environment to create assembly system, add-on installation test system, create communication arrangements SAP_COM_0510 and SAP_COM_0582 via service keys. The user needs to be a member of the global account and has to have the [Space Developer role](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/967fc4e2b1314cf7afc7d7043b53e566.html) in space of ABAP Environment systems.
 
-* __ATC__: `atcConfig` pointing to configuration file for ATC checks
+#### abapAddonAssemblyKitCredentialsId
+Communication with the AAKaaS needs a technical communication user. The creation and activation of such a user in SAP ONE Support Launchpad is described in [SAP note 2174416](https://launchpad.support.sap.com/#/notes/2174416). Make sure that this technical communication user is assigned to the customer number under which the “SAP CP ABAP ENVIRONMENT” tenants are licensed and for which the development namespace was reserved.
 
-* __Build__: `cfServiceKeyName` for creation of SAP_COM_0582 communication arrangement via parameters defined in `cfServiceKeyConfig` file (`sap_com_0582.json`)
+### [addon.yml](addon.yml)
+Definition of addon product version/software component versions bundle to be assembled.
+| **Parameter**           | **Description**                                                                                           | **Remarks**                                                                                                                                                                                                        |
+|-------------------------|-----------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| addonProduct            | Technical name of the add-on product                                                                      | Add-on product namne registered with SAP, see [Register Add-on Product for a Global Account](https://www.project-piper.io/scenarios/abapEnvironmentAddons/#register-add-on-product-for-a-global-account)           |
+| addonVersion            | Technical version of the add-on product: <product version>.<support package stack level>.<patch level>    |                                                                                                                                                                                                                    |
+| repositories            | Contains one or multiple software component versions                                                      | Order of software components defines import order                                                                                                                                                                  |
+| repositories > name     | Technical name of the software component                                                                  | Name of software component in [Manage Software Components](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/3dcf76a072c9450eb46b99db947dab46.html) application                             |
+| repositories > branch   | This is the maintenance branch from the git repository                                                    | Name of branch in [Manage Software Components](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/3dcf76a072c9450eb46b99db947dab46.html) application to be checked out for add-on assembly   |
+| respoitories > version  | This is the technical software component version                                                          |                                                                                                                                                                                                                    |
+| repositories > commitID | commit id specified for a repository                                                                      | Short Commit ID as provided in [Manage software Components](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/3dcf76a072c9450eb46b99db947dab46.html)) application                           |
 
-* __Integration Tests__: `cfOrg`, `cfSpace`, `cfServiceInstance` pointing to space where add-on installation test system shall be created.  The configuration of the add-on installation test system is defined in `cfService`, `cfServicePlan`, `abapSystemAdminEmail`, `abapSystemDescription`, `abapSystemIsDevelopmentAllowed`, `abapSystemID`, `abapSystemSizeOfPersistence`, `abapSystemSizeOfRuntime`, `includeAddon`. The service provisioning parameters are described in [Creating an ABAP System](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/50b32f144e184154987a06e4b55ce447.html).
-With `confirmDeletion` the deletion of the add-on installation test system has to be confirmed.
-The add-on installation test system should be provisioned as abap/saas_oem service instance with parameter `is_developmend_allowed` set to *false*.
-The parameters `addon_product_version` and `addon_product_name` will be taken from the configuration in `addon.yml` file
+Please refer to the documentation on [Add-on descriptor file](https://www.project-piper.io/scenarios/abapEnvironmentAddons/#add-on-descriptor-file) for more information.
 
-* __Publish__: With `targetVectorScope: 'P'` the stage is enabled
+### [atcConfig.yml](atcConfig.yml)
+Configuration of software components checked via ATC, check variant `SAP_CLOUD_PLATFORM_ATC_DEFAULT` is used for check runs.
+Please refer to the documentation on [ATC config file](https://www.project-piper.io/steps/abapEnvironmentRunATCCheck/#atc-config-file-example) for more information.
 
-* __Post__: With `confirmDeletion` the deletion of the assembly system has to be confirmed, `cfDeleteServiceKeys` to always delete service keys before ABAP system deletion
-
-### addon.yml
-Definition of addon product version/software component versions bundle to be assembled
-
-### atcConfig.yml
-Configuration of software components checked via ATC, check variant `SAP_CLOUD_PLATFORM_ATC_DEFAULT` is used for check runs
-
-### sap_com_0510.json
+### [sap_com_0510.json](sap_com_0510.json)
 Service key parameters for creation of communication arrangement SAP_COM_0510
 
-### sap_com_0582.json
-Service key parameters for creation of communication arrangement SAP_COM_0582
-
-## Extensions
-* __ATC.groovy__: Display ATC results using the [Warnings Next Generation Plugin](https://www.jenkins.io/doc/pipeline/steps/warnings-ng/#warnings-next-generation-plugin)
+## Feedback
+Please create a [GitHub issue](https://github.com/SAP-samples/abap-platform-ci-cd-samples/issues) in this repository if you have suggestions on how to improve this example.
