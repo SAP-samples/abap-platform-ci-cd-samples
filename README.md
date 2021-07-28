@@ -48,9 +48,6 @@ Release Decision
 #### [Publish](https://www.project-piper.io/pipelines/abapEnvironment/stages/publish/)
   * After confirmation: Trigger publication of the target vector with production scope
 
-#### [Post](https://www.project-piper.io/pipelines/abapEnvironment/stages/post/)
-  * After successful pipeline execution: assembly system is deleted
-
 ## Configuration
 ### [.pipeline/config.yml](.pipeline/config.yml)
 A configuration file .pipeline/config.yml is used to provide all required values to run the pipeline.
@@ -83,7 +80,6 @@ A configuration file .pipeline/config.yml is used to provide all required values
 | stages › Integration Tests › abapSystemAdminEmail                                                               | [E-Mail address for the initial administrator](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/50b32f144e184154987a06e4b55ce447.html) of the installation test system                                               |                                                                                                                                                                                             |
 | stages › Integration Tests › abapSystemID                                                                       | Three character name of the installation test system - maps to [sapSystemName](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/50b32f144e184154987a06e4b55ce447.html)                                               | Shown in Landscape Portal application                                                                                                                                                       |
 | stages › [Publish](https://www.project-piper.io/pipelines/abapEnvironment/stages/publish/)                      | This stage publishes an add-on for the SAP BTP, ABAP environment                                                                                                                                                                             |                                                                                                                                                                                             |
-| stages › [Post](https://www.project-piper.io/pipelines/abapEnvironment/stages/post/)                            | This stage deletes the assembly system created in the Prepare System stage                                                                                                                                                                   |                                                                                                                                                                                             |
 
 ### Users
 Create [Jenkins Credentials](https://www.jenkins.io/doc/book/using/using-credentials/) for following users.
