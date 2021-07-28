@@ -29,9 +29,8 @@ stages:
     #Parameteter 'repositories': Specifies a YAML file containing configuration of repositories to be imported
     repositories: 'addon.yml'
     #Parameter 'strategy': influences, which steps will be executed to import the repositories
-    #strategy: 'Clone' is recommended if a new system is created in the Prepare System stage.
-    #strategy: 'CheckoutPull' is recommended if a static system is used. The software component should be cloned beforehand.
-    strategy: 'Clone'
+    #strategy: 'CheckoutPull' is recommended if a permanent system is used. The software component should be cloned beforehand.
+    strategy: 'CheckoutPull'
   #Stage 'ATC': In this stage, ATC checks can be executed using abapEnvironmentRunATCCheck.
   ATC:
     #Parameter 'atcConfig': Path to a YAML configuration file for Packages and/or Software Components to be checked during ATC run
@@ -55,6 +54,3 @@ stages:
   #Stage 'Publish': This stage publishes an add-on for the SAP BTP, ABAP environment
   Publish:
     active: true
-  #Stage 'Post': This stage deletes the assembly system created in the Prepare System stage.
-  Post:
-    confirmDeletion: true
