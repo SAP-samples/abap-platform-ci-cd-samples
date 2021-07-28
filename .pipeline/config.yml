@@ -30,7 +30,6 @@ stages:
     repositories: 'addon.yml'
     #Parameter 'strategy': influences, which steps will be executed to import the repositories
     #strategy: 'Clone' is recommended if a new system is created in the Prepare System stage.
-    #strategy: 'CheckoutPull' is recommended if a static system is used. The software component should be cloned beforehand.
     strategy: 'Clone'
   #Stage 'ATC': In this stage, ATC checks can be executed using abapEnvironmentRunATCCheck.
   ATC:
