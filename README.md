@@ -106,8 +106,6 @@ Definition of addon product version/software component versions bundle to be ass
 | respoitories > version  | This is the technical software component version                                                          |                                                                                                                                                                                                                    |
 | repositories > commitID | commit id specified for a repository                                                                      | Short Commit ID as provided in [Manage software Components](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/3dcf76a072c9450eb46b99db947dab46.html)) application                           |
 
-Please refer to the documentation on [Add-on descriptor file](https://www.project-piper.io/scenarios/abapEnvironmentAddons/#add-on-descriptor-file) for more information.
-
 ### [atcConfig.yml](atcConfig.yml)
 Configuration of software components checked via ATC, check variant `SAP_CLOUD_PLATFORM_ATC_DEFAULT` is used for check runs.
 Please refer to the documentation on [ATC config file](https://www.project-piper.io/steps/abapEnvironmentRunATCCheck/#atc-config-file-example) for more information.
