@@ -1,0 +1,19 @@
+---
+#Parameter 'addonProduct': Technical name of the add-on product
+addonProduct: /NAMESPC/PRODUCTX
+#Parameter 'addonVersion': Technical version of the add-on product <product version>.<support package stack level>.<patch level>
+addonVersion: 1.2.0
+#Parameter 'repositories': contains one or multiple software component versions
+repositories:
+    #Parameter 'name': Technical name of the software component
+  - name: /NAMESPC/COMPONENTA
+    #Parameter 'branch': This is the maintenance branch from the git repository
+    branch: v1.2.0
+    #Parameter 'version': This is the technical software component version
+    version: 1.2.0
+    #Parameter 'commitID': commit id specified for a repository
+    commitID: 7d4516e9
+  - name: /NAMESPC/COMPONENTB
+    branch: v2.0.0
+    version: 2.0.0
+    commitID: 9f102ffb
