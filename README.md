@@ -11,7 +11,7 @@
 
 Please refer to the [documentation](https://sap.github.io/jenkins-library/scenarios/abapEnvironmentAddons/) for more details about the scenario.
 
-In this example a permanent add-on assembly system is being used and the system is not deleted in the [Post stage](https://www.project-piper.io/pipelines/abapEnvironment/stages/post/).
+In this example a **permanent** add-on assembly system is being used and the system **is not deleted** in the [Post stage](https://www.project-piper.io/pipelines/abapEnvironment/stages/post/).
 Software components are imported into the system by using the [`CheckoutPull` strategy](https://www.project-piper.io/pipelines/abapEnvironment/stages/cloneRepositories/#stage-parameters).
 
 ### Pipeline Stages
