@@ -7,6 +7,9 @@
 
 Please refer to the [documentation](https://sap.github.io/jenkins-library/scenarios/abapEnvironmentAddons/) for more details about the scenario.
 
+In this example a **transient** add-on assembly system is being used and the system **is deleted** in the [Post stage](https://www.project-piper.io/pipelines/abapEnvironment/stages/post/).
+Software components are imported into the system by using the [`Clone` strategy](https://www.project-piper.io/pipelines/abapEnvironment/stages/cloneRepositories/#stage-parameters).
+
 ### Pipeline Stages
 
 ![ABAP Environment Build Pipeline](https://www.project-piper.io/images/abapEnvironmentBuildPipeline.png "ABAP Environment Build Pipeline")
