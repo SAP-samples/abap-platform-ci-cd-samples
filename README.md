@@ -1,6 +1,6 @@
 # Build add-ons on a permanent ABAP Environment system
 
-[back to master](https://github.com/SAP-samples/abap-platform-ci-cd-samples/tree/master)
+[back to main](https://github.com/SAP-samples/abap-platform-ci-cd-samples/tree/main)
 
 ## Prerequisites
 
