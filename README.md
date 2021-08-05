@@ -4,8 +4,8 @@
 
 ## Prerequisites
 
-* A permanent add-on assembly System is created in advance with provisioning parameter `is_development_allowed = false` and the service instance name as provided in `cfServiceInstance` [parameter in the pipeline configuration](.pipeline/config.yml#L15)
-* The initial [clone of software components](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/18564c54f529496ba420d4c83545a2ce.html) included in the [add-on descriptor file](addon.yml) must be triggered in advance of the pipeline execution via the [Manage Software Components](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/3dcf76a072c9450eb46b99db947dab46.html) app
+* A permanent add-on assembly System is created in advance with provisioning parameter `is_development_allowed = false` and the service instance name as provided in `cfServiceInstance` [parameter in the pipeline configuration](.pipeline/config.yml#L15). The add-on assembly system is created using the `abap/standard` service. How to create such a system is described in [Creating an ABAP System](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/50b32f144e184154987a06e4b55ce447.html).
+* The initial [clone of software components](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/18564c54f529496ba420d4c83545a2ce.html) included in the [add-on descriptor file](addon.yml) must be triggered in advance of the pipeline execution via the [Manage Software Components](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/3dcf76a072c9450eb46b99db947dab46.html) app.
 
 ## Description
 
