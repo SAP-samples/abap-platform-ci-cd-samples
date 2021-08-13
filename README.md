@@ -14,6 +14,8 @@ Please refer to the [documentation](https://sap.github.io/jenkins-library/scenar
 In this example a **permanent** add-on assembly system is being used and the system **is not deleted** in the [Post stage](https://www.project-piper.io/pipelines/abapEnvironment/stages/post/).
 Software components are imported into the system by using the [`CheckoutPull` strategy](https://www.project-piper.io/pipelines/abapEnvironment/stages/cloneRepositories/#stage-parameters).
 
+**Note**: The add-on assembly system should be permanent for the duration of a maintenance branch only, to build new patch versions on the same support package level.
+
 ### Pipeline Stages
 
 ![ABAP Environment Build Pipeline](https://www.project-piper.io/images/abapEnvironmentBuildPipeline.png "ABAP Environment Build Pipeline")
