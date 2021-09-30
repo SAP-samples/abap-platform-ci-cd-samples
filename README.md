@@ -117,7 +117,7 @@ Please refer to the documentation on [ATC config file](https://www.project-piper
 Service key parameters for creation of communication arrangement SAP_COM_0510
 
 ### [sap_com_0582.json](sap_com_0582.json)
-Service key parameters for creation of communication arrangement SAP_COM_0510
+Service key parameters for creation of communication arrangement SAP_COM_0582
 
 ## Feedback
 Please create a [GitHub issue](https://github.com/SAP-samples/abap-platform-ci-cd-samples/issues) in this repository if you have suggestions on how to improve this example.
