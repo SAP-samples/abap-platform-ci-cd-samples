@@ -22,7 +22,7 @@ Software components are imported into the system by using the [`Clone` strategy]
 - Creating a Communication Arrangement for the Scenario SAP_COM_0510 via a service key in the assembly system
 
 #### [Clone Repositories](https://www.project-piper.io/pipelines/abapEnvironment/stages/cloneRepositories/)
-- Switch between branches of a git repository on a SAP Cloud Platform ABAP Environment system
+- Switch between branches of a git repository on a SAP BTP ABAP Environment system
 - Clone software components relevant for the add-on build
 
 #### [ATC](https://www.project-piper.io/pipelines/abapEnvironment/stages/ATC/)
