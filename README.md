@@ -1,10 +1,10 @@
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/abap-platform-ci-cd-samples)](https://api.reuse.software/info/github.com/SAP-samples/abap-platform-ci-cd-samples)
 
 # ABAP Platform CI/CD Samples
-The ABAP Environment pipeline makes use of APIs of the SAP Cloud Platform (esp. cf cli) and  SAP Cloud Platform, ABAP environment (project name "Steampunk"). While the pipeline contains a fixed set of steps and stages, it is possible to adapt it using different configurations. This repository shows and explains different examples of these configurations. 
+The ABAP Environment pipeline makes use of APIs of the SAP BTP (esp. cf cli) and  SAP BTP, ABAP environment (project name "Steampunk"). While the pipeline contains a fixed set of steps and stages, it is possible to adapt it using different configurations. This repository shows and explains different examples of these configurations. 
 
 ## Requirements
-To create the examples shown in this repository yourself, a Jenkins server and the entitlements for SAP Cloud Platform, ABAP environment are required.
+To create the examples shown in this repository yourself, a Jenkins server and the entitlements for SAP BTP, ABAP environment are required.
 
 ## Configuration
 Please have a look at the [documentation of the piper project](https://sap.github.io/jenkins-library/pipelines/abapEnvironment/introduction/) to learn more about the configurations necessary to run the examples in this repository.
