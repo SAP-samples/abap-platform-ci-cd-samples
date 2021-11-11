@@ -4,7 +4,6 @@ general:
   cfSpace: 'mySpace'
   cfCredentialsId: 'cfAuthentification'
   cfServiceInstance: 'atc_system'
-  cfServiceKeyName: 'JENKINS_SAP_COM_0510'
 stages:
   Clone Repositories:
     repositories: 'repositories.yml'
