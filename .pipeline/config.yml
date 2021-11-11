@@ -6,14 +6,21 @@ general:
   cfServiceInstance: 'atc_system'
 stages:
   Prepare System:
+    cfService: 'abap'
+    cfServicePlan: 'standard'
     abapSystemAdminEmail: 'user@example.com'
-    abapSystemID: 'TST'
+    abapSystemDescription: 'ABAP Environment Q System'
+    abapSystemIsDevelopmentAllowed: false
+    abapSystemID: 'H02'
+    abapSystemSizeOfPersistence: 4
+    abapSystemSizeOfRuntime: 1
   Clone Repositories:
     repositories: 'repositories.yml'
+    strategy: 'Clone'
   ATC:
     atcConfig: 'atcConfig.yml'
   AUnit:
     aUnitConfig: 'aUnitConfig.yml'
-steps:
-  cloudFoundryDeleteService:
+  Post:
+    confirmDeletion: true
     cfDeleteServiceKeys: true
