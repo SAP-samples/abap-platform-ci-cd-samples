@@ -11,3 +11,5 @@ stages:
     strategy: 'Pull'
   ATC:
     atcConfig: 'atcConfig.yml'
+  AUnit:
+    aUnitConfig: 'aUnitConfig.yml'

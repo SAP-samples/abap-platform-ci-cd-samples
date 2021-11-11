@@ -1,4 +1,4 @@
-# Running ATC checks on a static ABAP Environment system
+# Running ATC checks & AUnit tests on a static ABAP Environment system
 
 [back to main](https://github.com/SAP-samples/abap-platform-ci-cd-samples/tree/main)
 
@@ -8,6 +8,7 @@ This pipeline goes through the following steps:
 
 * Pulling the specified Software Components / Git repositories
 * Running the configured ABAP Test Cockpit (ATC) checks
+* Running the configured AUnit tests
 
 For this a static, preconfigured system is being used.
 
