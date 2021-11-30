@@ -1,4 +1,4 @@
-checkvariant: SAP_CLOUD_PLATFORM_ATC_DEFAULT
+checkvariant: ABAP_CLOUD_DEVELOPMENT_DEFAULT
 atcobjects:
   softwarecomponent:
     - name: "/NAMESPC/COMPONENTA"
