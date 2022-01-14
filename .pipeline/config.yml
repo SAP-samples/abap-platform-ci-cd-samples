@@ -9,6 +9,6 @@ stages:
     repositories: 'repositories.yml'
     strategy: 'Pull'
   ATC:
-    atcConfig: 'atcConfig.yml'
+    active: true
   AUnit:
-    aUnitConfig: 'aUnitConfig.yml'
+    active: true
