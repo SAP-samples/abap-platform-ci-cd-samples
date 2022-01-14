@@ -1,22 +1,5 @@
-title: AUnit Run
-context: Unit Tests
-options:
-  measurements: none
-  scope:
-    ownTests: true
-    foreignTests: true
-  riskLevel:
-    harmless: true
-    dangerous: true
-    critical: true
-  duration:
-    short: true
-    medium: true
-    long: true
+title: AUnit Test
+context: Jenkins Pipeline
 objectSet:
-  - type: unionSet
-    set:
-      - type: packageSet
-        package:
-          - name: /DMO/SWC
-            includeSubpackages: false
+  softwarecomponents:
+  - name: /DMO/SWC
