@@ -1,4 +1,0 @@
-checkvariant: ABAP_CLOUD_DEVELOPMENT_DEFAULT
-atcobjects:
-  softwarecomponent:
-    - name: "/DMO/SWC"
