@@ -29,7 +29,8 @@ Software components are imported into the system by using the [`Clone` strategy]
 - Check software components to be assembled as part of the add-on build via ABAP Test Cockpit (Check Variant: ABAP_CLOUD_DEVELOPMENT_DEFAULT)
 
 **Note**: The ATC results are displayed using the [Warnings Next Generation Plugin](https://www.jenkins.io/doc/pipeline/steps/warnings-ng/#warnings-next-generation-plugin). 
-If you don't want to use this plugin - or if it's not available on your Jenkins server - leave out the extension for the ATC stage (.pipeline/extensions/ATC.groovy).
+If you don't want to use this plugin - or if it's not available on your Jenkins server - leave out the extension for the ATC stage [.pipeline/extensions/ATC.groovy](.pipeline/extensions/ATC.groovy).
+
 A [Quality gate configuration](https://github.com/jenkinsci/warnings-ng-plugin/blob/master/doc/Documentation.md#quality-gate-configuration) to block priority 1 ATC findings is defined.
 
 #### [Build](https://www.project-piper.io/pipelines/abapEnvironment/stages/build/)
