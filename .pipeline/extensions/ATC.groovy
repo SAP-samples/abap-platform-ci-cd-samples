@@ -8,7 +8,7 @@ void call(Map params) {
   //execute original stage as defined in the template
   params.originalStage()
   
-  recordIssues tools: [checkStyle(pattern: '**/ATCResults.xml')], qualityGates: [[threshold: 1, type: 'TOTAL', unstable: true]]
+  recordIssues tools: [checkStyle(pattern: '**/ATCResults.xml')], qualityGates: [[threshold: 1, type: 'TOTAL', unstable: true], [threshold: 1, type: 'TOTAL_HIGH', unstable: false]]
 
   echo "End - Extension for stage: ${params.stageName}"
 }
