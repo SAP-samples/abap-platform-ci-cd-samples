@@ -27,10 +27,10 @@ Software components are imported into the system by using the [`Clone` strategy]
 
 #### [ATC](https://www.project-piper.io/pipelines/abapEnvironment/stages/ATC/)
 - Check software components to be assembled as part of the add-on build via ABAP Test Cockpit (Check Variant: ABAP_CLOUD_DEVELOPMENT_DEFAULT)
+- ATC results are displayed using the [Warnings Next Generation Plugin](https://www.jenkins.io/doc/pipeline/steps/warnings-ng/#warnings-next-generation-plugin)
+- A [Quality gate configuration](https://github.com/jenkinsci/warnings-ng-plugin/blob/master/doc/Documentation.md#quality-gate-configuration) to block priority 1 ATC findings is defined
 
-**Note**: The ATC results are displayed using the [Warnings Next Generation Plugin](https://www.jenkins.io/doc/pipeline/steps/warnings-ng/#warnings-next-generation-plugin).
-A [Quality gate configuration](https://github.com/jenkinsci/warnings-ng-plugin/blob/master/doc/Documentation.md#quality-gate-configuration) to block priority 1 ATC findings is defined.<br>
-If you don't want to use this plugin or if it's not available on your Jenkins server, leave out the [extension for the ATC stage](.pipeline/extensions/ATC.groovy).
+**Note**: If you don't want to use the [Warnings Next Generation Plugin](https://www.jenkins.io/doc/pipeline/steps/warnings-ng/#warnings-next-generation-plugin)  or if it's not available on your Jenkins server, leave out the [extension for the ATC stage](.pipeline/extensions/ATC.groovy).
 
 #### [Build](https://www.project-piper.io/pipelines/abapEnvironment/stages/build/)
   * Creating a Communication Arrangement for the Scenario SAP_COM_0582 via a service key in the assembly system
@@ -109,7 +109,7 @@ Please refer to the documentation on [Add-on descriptor file](https://www.projec
 
 ### [atcConfig.yml](atcConfig.yml)
 Configuration of software components checked via ATC, check variant `ABAP_CLOUD_DEVELOPMENT_DEFAULT` is used for check runs.<br>
-**Note:** Please include all software components configured in [addon.yml](addon.yml) also in the [atcConfig.yml](atcConfig.yml) file.<br>
+Please include all software components configured in [addon.yml](addon.yml) also in the [atcConfig.yml](atcConfig.yml) file.<br>
 Refer to the documentation on [ATC config file](https://www.project-piper.io/steps/abapEnvironmentRunATCCheck/#atc-config-file-example) for more information.
 
 ## Feedback
