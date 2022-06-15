@@ -9,6 +9,10 @@ void call(Map params) {
   params.originalStage()
   
   recordIssues tools: [checkStyle(pattern: '**/ATCResults.xml')], qualityGates: [[threshold: 1, type: 'TOTAL', unstable: true], [threshold: 1, type: 'TOTAL_ERROR', unstable: false]]
+
+  if (currentBuild.result == 'FAILURE') {
+    error('Stopping build due to ATC Check quality gate')
+  }
   
   echo "End - Extension for stage: ${params.stageName}"
 }
