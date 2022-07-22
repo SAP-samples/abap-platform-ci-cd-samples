@@ -28,8 +28,8 @@ Software components are imported into the system by using the [`Clone` strategy]
 #### [ATC](https://www.project-piper.io/pipelines/abapEnvironment/stages/test/#atc)
 - Check software components to be assembled as part of the add-on build via ABAP Test Cockpit (Check Variant: ABAP_CLOUD_DEVELOPMENT_DEFAULT)
 - ATC results in checkstyle format are displayed using the [Warnings Next Generation Plugin](https://www.jenkins.io/doc/pipeline/steps/warnings-ng/#warnings-next-generation-plugin)
-- A [Quality gate configuration](https://github.com/jenkinsci/warnings-ng-plugin/blob/master/doc/Documentation.md#quality-gate-configuration) to block priority 1 ATC findings is defined (build result = ERROR)
-- A [Quality gate configuration](https://github.com/jenkinsci/warnings-ng-plugin/blob/master/doc/Documentation.md#quality-gate-configuration) to report any priority 2-3 ATC findings is defined (build result = UNSTABLE)
+- [Quality gate configurations](https://github.com/jenkinsci/warnings-ng-plugin/blob/master/doc/Documentation.md#quality-gate-configuration) to block priority error and warning ATC findings are defined (build result = FAILURE), pipeline execution is aborted in this case with error
+- A [Quality gate configuration](https://github.com/jenkinsci/warnings-ng-plugin/blob/master/doc/Documentation.md#quality-gate-configuration) to report ATC findings of any priority is defined (build result = UNSTABLE)
 
 **Note**: If you don't want to use the [Warnings Next Generation Plugin](https://www.jenkins.io/doc/pipeline/steps/warnings-ng/#warnings-next-generation-plugin) or if it's not available on your Jenkins server, leave out the [extension for the ATC stage](.pipeline/extensions/ATC.groovy).
 
