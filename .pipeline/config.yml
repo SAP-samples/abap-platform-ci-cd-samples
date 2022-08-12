@@ -4,7 +4,7 @@ general:
   #Parameter 'addonDescriptorFileName': Path to YAML config file for addon descriptor
   addonDescriptorFileName: 'addon.yml'
   #Parameter 'cfApiEndpoint': Cloud Foundry API Endpoint specific to region of Cloud Foundry Environment to be used
-  cfApiEndpoint: 'https://api.cf.sap.hana.ondemand.com'
+  cfApiEndpoint: 'https://api.cf.eu10.hana.ondemand.com'
   #Parameter 'cfOrg': Cloud Foundry Organization used to create assembly system
   cfOrg: 'myOrgBld'
   #Parameter 'cfSpace': Cloud Foundry Space used to create assembly system
