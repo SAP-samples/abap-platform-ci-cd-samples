@@ -15,6 +15,8 @@ For this a static, preconfigured system is being used.
 Prerequisites are:
 
 * Communication Arrangement SAP_COM_0510 was [created via Service Key](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/1cc5a1da02594b93a70f6c0fe2bfdfe8.html) with the default Service Key name: `sap_com_0510`
+* Communication Arrangement SAP_COM_0901 was [created via Service Key](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/1cc5a1da02594b93a70f6c0fe2bfdfe8.html) with the default Service Key name: `sap_com_0901`
+* Communication Arrangement SAP_COM_0735 was [created via Service Key](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/1cc5a1da02594b93a70f6c0fe2bfdfe8.html) with the default Service Key name: `sap_com_0735`
 * Initial [clone of software components](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/18564c54f529496ba420d4c83545a2ce.html) was triggered via the Manage Software Components app
 
 Recommendation:
