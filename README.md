@@ -7,7 +7,7 @@
 This pipeline goes through the following steps:
 
 * Creating an SAP BTP ABAP Environment system
-* Creating a Communication Arrangement for the Scenario SAP_COM_0510
+* Creating all required Communication Arrangements
 * Pulling the specified Software Components / Git repositories
 * Running the configured ABAP Test Cockpit (ATC) checks
 * Running the configured AUnit tests
