@@ -9,9 +9,7 @@ stages:
   Clone Repositories:
     strategy: 'Pull'
   ATC:
-    # In order to be executed, the ATC stage needs at least one configuration entry
-    # If the ATC stage should not be executed, delete the whole section
-    execute: stage
+    atcConfig: 'atcConfig.yml'
   AUnit:
     # In order to be executed, the AUnit stage needs at least one configuration entry
     # If the AUnit stage should not be executed, delete the whole section
