@@ -1,4 +1,4 @@
-checkvariant: ABAP_CLOUD_DEVELOPMENT_DEFAULT
+checkvariant: ABAP_CLOUD_DEVELOPMENT_PARTNER
 atcobjects:
   softwarecomponent:
     - name: "/NAMESPC/COMPONENTA"
