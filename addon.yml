@@ -13,7 +13,15 @@ repositories:
     version: "1.2.0"
     #Parameter 'commitID': commit id specified for a repository
     commitID: "7d4516e9"
+    languages:
+      - EN
+      - DE
+      - ZH
   - name: "/NAMESPC/COMPONENTB"
     branch: "v2.0.0"
     version: "2.0.0"
     commitID: "9f102ffb"
+    languages:
+      - EN
+      - DE
+      - ZH
